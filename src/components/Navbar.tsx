@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useRef } from 'react';
 import Link from 'next/link';
 import {
   ClerkProvider,
@@ -38,22 +38,43 @@ interface DropdownProps {
   items: string[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ isOpen, setIsOpen, title, items }) => (
-  <div className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-    <button className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 focus:outline-none">
-      {title}
-    </button>
-    {isOpen && (
-      <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-10">
-        {items.map((item: string, index: number) => (
-          <DropdownItem key={index} href={`/${title.toLowerCase()}/${item.toLowerCase().replace(' ', '-')}`}>
-            {item}
-          </DropdownItem>
-        ))}
-      </div>
-    )}
-  </div>
-);
+const Dropdown: React.FC<DropdownProps> = ({ isOpen, setIsOpen, title, items }) => {
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timerRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 200); // Add a small delay (200ms) before closing
+  };
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200 focus:outline-none">
+        {title}
+      </button>
+      {isOpen && (
+        <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg overflow-hidden z-10">
+          {items.map((item: string, index: number) => (
+            <DropdownItem key={index} href={`/${title.toLowerCase()}/${item.toLowerCase().replace(' ', '-')}`}>
+              {item}
+            </DropdownItem>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Navbar: React.FC = () => {
   const [coursesOpen, setCoursesOpen] = useState<boolean>(false);
@@ -86,7 +107,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className="ml-auto flex items-center">
           <NavItem href="/questions">
-            <UserButton/>
+            <UserButton />
           </NavItem>
         </div>
       </div>
