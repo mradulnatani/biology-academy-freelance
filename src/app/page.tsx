@@ -8,12 +8,13 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import SigningPage from "~/components/SigningPage";
 import {Home} from "~/components/Home"
 import Navbar from "~/components/Navbar"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-green-100 text-black">
-      <SignedOut><SignInButton/><Home/></SignedOut>
+      <SignedOut><SigningPage/></SignedOut>
       <SignedIn>
       <Navbar/>
       <Home/>
