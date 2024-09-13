@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent } from '~/components/ui/card';
+import {Testimonial} from "~/components/Testimonial"
 import {
   Carousel,
   CarouselContent,
@@ -57,7 +58,7 @@ export function Home() {
   return (
     <div className="min-h-screen pt-2">
       {/* Carousel Section */}
-      <section id="home" className="min-w-full flex justify-center py-10">
+      <section id="home" className="min-w-full flex justify-center py-2">
         <div className="w-[90vw] h-[50vh]">
           <Carousel className="w-full">
             <CarouselContent>
@@ -82,7 +83,7 @@ export function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section id="statistics" className="mt-16 flex justify-center w-full py-10">
+      <section id="statistics" className="flex justify-center w-full py-10">
         <div className="w-[70vw] grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="bg-green-700 text-white text-center p-4 hover:bg-green-600">
             <CardContent>
@@ -115,16 +116,16 @@ export function Home() {
       </section>
 
       {/* Courses Carousel Section */}
-     
-
-      {/* Course Cards Section */}
       <section id="course-cards" className="text-center mt-10 pt-32">
         <u><h1 className="text-3xl font-bold">Our Courses</h1></u>
       </section>
       <section className="mt-10 flex justify-center w-full py-10">
         <div className="w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {courses.map((course, index) => (
-            <Card key={index} className="bg-gray-900 w-full h-full">
+            <Card
+              key={index}
+              className="bg-gray-900 w-full h-full transition-transform transform hover:scale-105"
+            >
               <CardContent className="flex flex-col items-center p-4">
                 <img
                   src={course.image}
@@ -149,8 +150,8 @@ export function Home() {
       {/* What our Students Say Section */}
       <section id="testimonials" className="mt-16 flex justify-center w-full py-10">
         {/* Testimonials Content */}
-        <h2 className="text-2xl font-bold">What Our Students Say</h2>
-        {/* Add your testimonials content here */}
+        
+        <Testimonial/>
       </section>
 
       {/* Footer Section */}
