@@ -56,8 +56,9 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
 export function Testimonial() {
   return (
     <div>
-      <u><h2 className="text-3xl font-bold pb-6 ml-20">What Our Students Say</h2></u>
-
+  <h1 className="text-3xl font-bold text-black shadow-lg ml-20 mr-32">
+  What our students say
+</h1>
       <Carousel
         opts={{
           align: "start",

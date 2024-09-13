@@ -65,7 +65,7 @@ export function Home() {
               {Array.from({ length: 5 }).map((_, index) => (
                 <CarouselItem key={index} className="w-full">
                   <div className="p-4 w-full">
-                    <Card className="bg-gray-300 w-full h-[50vh] flex items-center justify-center">
+                    <Card className="bg-gray-300 w-full h-[70vh] flex items-center justify-center">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <span className="text-4xl font-semibold text-white">
                           {index + 1}
@@ -83,7 +83,7 @@ export function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section id="statistics" className="flex justify-center w-full py-10">
+      <section id="statistics" className="flex justify-center w-full py-10 pt-44">
         <div className="w-[70vw] grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card className="bg-green-700 text-white text-center p-4 hover:bg-green-600">
             <CardContent>
@@ -116,8 +116,11 @@ export function Home() {
       </section>
 
       {/* Courses Carousel Section */}
-      <section id="course-cards" className="text-center mt-10 pt-32">
-        <u><h1 className="text-3xl font-bold">Our Courses</h1></u>
+      <section id="course-cards" className="text-center mt-10 pt-16">
+      <h1 className="text-3xl font-bold text-black shadow-lg">
+  Our Courses
+</h1>
+
       </section>
       <section className="mt-10 flex justify-center w-full py-10">
         <div className="w-[80vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -148,18 +151,12 @@ export function Home() {
       </section>
 
       {/* What our Students Say Section */}
-      <section id="testimonials" className="mt-16 flex justify-center w-full py-10">
+      <section id="testimonials" className="mt-16 flex justify-center w-full py-5">
         {/* Testimonials Content */}
         
         <Testimonial/>
       </section>
-
-      {/* Footer Section */}
-      <section id="footer" className="mt-16 flex justify-center w-full py-10">
-        {/* Footer Content */}
-        <h2 className="text-2xl font-bold">Footer</h2>
-        {/* Add your footer content here */}
-      </section>
+     
     </div>
   );
 }

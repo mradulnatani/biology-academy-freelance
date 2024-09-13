@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import Footer from "~/components/Footer";
 import SigningPage from "~/components/SigningPage";
 import {Home} from "~/components/Home"
 import Navbar from "~/components/Navbar"
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Navbar/>
       <Home/>
       </SignedIn>
+      <Footer/>
     </main>
   );
 }
