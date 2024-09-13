@@ -15,9 +15,14 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ href, children }) => (
-  <Link href={href} className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200">
+  <a
+    href={href}
+    className="px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors duration-200"
+    // Scroll behavior added for smooth scrolling
+    style={{ scrollBehavior: 'smooth' }}
+  >
     {children}
-  </Link>
+  </a>
 );
 
 interface DropdownItemProps {
@@ -26,9 +31,12 @@ interface DropdownItemProps {
 }
 
 const DropdownItem: React.FC<DropdownItemProps> = ({ href, children }) => (
-  <Link href={href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 rounded-md transition-colors duration-200">
+  <a
+    href={href}
+    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100 rounded-md transition-colors duration-200"
+  >
     {children}
-  </Link>
+  </a>
 );
 
 interface DropdownProps {
@@ -89,7 +97,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex flex-grow items-center justify-center space-x-4">
-          <NavItem href="/">Home</NavItem>
+          <NavItem href="#home">Home</NavItem>
           <Dropdown
             isOpen={coursesOpen}
             setIsOpen={setCoursesOpen}
@@ -102,13 +110,18 @@ const Navbar: React.FC = () => {
             title="Notes"
             items={["Recent Notes", "Popular Notes", "Create Note", "All Notes"]}
           />
-          <NavItem href="/testpapers">Test Papers</NavItem>
-          <NavItem href="/questions">Questions</NavItem>
+          <NavItem href="#testpapers">Test Papers</NavItem>
+          <NavItem href="#questions">Questions</NavItem>
         </div>
         <div className="ml-auto flex items-center">
-          <NavItem href="/questions">
+          <SignedIn>
             <UserButton />
-          </NavItem>
+          </SignedIn>
+          <SignedOut>
+            <NavItem href="/sign-in">
+              <SignInButton>Sign In</SignInButton>
+            </NavItem>
+          </SignedOut>
         </div>
       </div>
     </nav>
