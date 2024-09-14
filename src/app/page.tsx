@@ -14,7 +14,7 @@ import {Home} from "~/components/Home"
 import Navbar from "~/components/Navbar"
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-green-700  text-black">
+    <main className="min-h-screen text-black">
       <SignedOut><SigningPage/></SignedOut>
       <SignedIn>
       <Navbar/>
